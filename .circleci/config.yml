@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6.12.3
+
+    working_directory: ~/stream-accumulator
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: configure NPM registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+      - run:
+          name: install dependencies
+          command: npm install --no-optional
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: unit tests
+          command: npm test
+
+      - run:
+          name: coverage reporting
+          command: npm run coverage:submit
+
+      - deploy:
+          name: publish
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm publish && npm run release:tag;
+            fi

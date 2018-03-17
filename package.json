@@ -1,0 +1,48 @@
+{
+  "name": "stream-accumulator",
+  "version": "0.0.1",
+  "description": "Accumulate all the data flowing through a stream and emit it as a single chunk or as a promise",
+  "main": "src/index.js",
+  "scripts": {
+    "test:lint": "eslint src",
+    "test:unit": "jest src --verbose --coverage",
+    "test": "npm run test:lint && npm run test:unit",
+    "release:tag": "git tag $npm_package_version && git push --tags"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "readable-stream": "^2.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmammino/stream-accumulator.git"
+  },
+  "keywords": [
+    "streams",
+    "stream",
+    "accumulator",
+    "buffer",
+    "accumulate"
+  ],
+  "author": {
+    "name": "Luciano Mammino",
+    "url": "https://loige.co"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lmammino/stream-accumulator/issues"
+  },
+  "homepage": "https://github.com/lmammino/stream-accumulator#readme"
+}

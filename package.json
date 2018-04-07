@@ -1,6 +1,6 @@
 {
   "name": "stream-accumulator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Accumulate all the data flowing through a stream and emit it as a single chunk or as a promise",
   "main": "src/index.js",
   "scripts": {
